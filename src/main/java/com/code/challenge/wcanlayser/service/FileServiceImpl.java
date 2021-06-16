@@ -108,7 +108,7 @@ public class FileServiceImpl implements FileService{
         //Sort by frequency
         Map<String, Integer> sortedfileAnalysis = fileAnalysis.entrySet()
                 .stream()
-                .sorted((Map.Entry.<String, Integer>comparingByValue()))
+                .sorted((Map.Entry.<String, Integer>comparingByValue().reversed()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (w1, w2) -> w1, LinkedHashMap::new));
         log.info("File word count Analysis completed, returning results.");
         return sortedfileAnalysis;
